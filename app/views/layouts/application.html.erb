@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <p>Bienvenido <%= current_user.email%></p>
+      <%= link_to 'cerrar sesion', destroy_user_session_path, method: :delete %>
+    <% else %>
+     <%= link_to 'iniciar sesion', new_user_session_path %>
+    <% end %>
+
+    <%= notice %>
+    <%= alert %>
+
+    <%= link_to 'ver carrito', orders_path %>
+    <%= link_to 'productos', root_path %>
     <%= yield %>
   </body>
 </html>
